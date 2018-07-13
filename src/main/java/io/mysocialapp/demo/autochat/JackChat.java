@@ -9,8 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 
-import static io.mysocialapp.demo.autochat.Main.APP_ID;
-import static io.mysocialapp.demo.autochat.Main.simulateUserTypingDelay;
+import static io.mysocialapp.demo.autochat.Main.*;
 
 /**
  * Created by evoxmusic on 09/07/2018.
@@ -24,7 +23,7 @@ public class JackChat {
         Session jackSession = new MySocialApp.Builder()
                 .setAppId(APP_ID)
                 .build()
-                .blockingConnect("jack.test@mysocialapp.io", "mySecretPassword");
+                .blockingConnect(JACK_EMAIL, ACCOUNT_PASSWORD);
 
         // listen for private messages from Alice and John
         jackSession.getNotification().addNotificationListener(new AbstractNotificationCallback() {
@@ -48,5 +47,7 @@ public class JackChat {
             }
 
         });
+
+        System.out.println("Jack is ready to chat");
     }
 }

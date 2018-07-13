@@ -7,8 +7,7 @@ import io.mysocialapp.client.models.ConversationMessage;
 import io.mysocialapp.client.models.ConversationMessagePost;
 import org.jetbrains.annotations.NotNull;
 
-import static io.mysocialapp.demo.autochat.Main.APP_ID;
-import static io.mysocialapp.demo.autochat.Main.simulateUserTypingDelay;
+import static io.mysocialapp.demo.autochat.Main.*;
 
 /**
  * Created by evoxmusic on 09/07/2018.
@@ -20,7 +19,7 @@ public class AliceChat {
         Session aliceSession = new MySocialApp.Builder()
                 .setAppId(APP_ID)
                 .build()
-                .blockingConnect("alice.test@mysocialapp.io", "mySecretPassword");
+                .blockingConnect(ALICE_EMAIL, ACCOUNT_PASSWORD);
 
         // listen for private messages from John and Jack
         aliceSession.getNotification().addNotificationListener(new AbstractNotificationCallback() {
@@ -43,5 +42,7 @@ public class AliceChat {
             }
 
         });
+
+        System.out.println("Alice is ready to chat");
     }
 }

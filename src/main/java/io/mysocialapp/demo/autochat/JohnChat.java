@@ -8,8 +8,7 @@ import io.mysocialapp.client.models.ConversationMessage;
 import io.mysocialapp.client.models.ConversationMessagePost;
 import org.jetbrains.annotations.NotNull;
 
-import static io.mysocialapp.demo.autochat.Main.APP_ID;
-import static io.mysocialapp.demo.autochat.Main.simulateUserTypingDelay;
+import static io.mysocialapp.demo.autochat.Main.*;
 
 /**
  * Created by evoxmusic on 09/07/2018.
@@ -20,7 +19,7 @@ public class JohnChat {
         Session johnSession = new MySocialApp.Builder()
                 .setAppId(APP_ID)
                 .build()
-                .blockingConnect("john.test@mysocialapp.io", "mySecretPassword");
+                .blockingConnect(JOHN_EMAIL, ACCOUNT_PASSWORD);
 
         // john create private conversation with Alice and Jack
         Conversation conv = new Conversation.Builder()
@@ -55,6 +54,8 @@ public class JohnChat {
 
         // john start chatting with the first message
         conversation.blockingSendMessage(new ConversationMessagePost.Builder().setMessage("Hello here").build());
+
+        System.out.println("John is ready to chat");
     }
 
 }
